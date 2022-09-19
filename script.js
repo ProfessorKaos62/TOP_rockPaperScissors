@@ -1,47 +1,54 @@
-// Rock Paper Scissors
-
-// users picks Rock Paper or Scissors
-// computer picks between same 3 variables at random ****
-// Rock beats Scissors
-// Scissors beats Paper
-// Paper beats Rock
-// return results
-
-
-
-const playerSelection = prompt('Choose your weapon', '');
+const playerSelection = prompt('Choose your weapon',).toLowerCase();
 console.log(playerSelection);
 
-function getComputerChoice(randomChoice) {
-    let item = randomChoice[Math.floor(Math.random()*randomChoice.length)];
-    console.log(item)
-    if (
-        (playerSelection === 'Rock' && item === 'Rock') ||
-        (playerSelection === 'Scissors' && item === 'Scissors') ||
-        (playerSelection === 'Paper' && item === 'Paper')) {
-            alert('It\'s a draw!');
-        }
+
+function getComputerChoice(randomChoice){
+    return randomChoice[Math.floor(Math.random()*randomChoice.length)];
+  }
+
+const computerChoice = ['Rock', 'Paper', 'Scissors'];
+
+const computerSelection = getComputerChoice(computerChoice).toLowerCase();
+console.log(computerSelection);
+
+const tieGame = 'Tie, No Points';
+let playerWins = 0;
+let computerWins = 0;
+
+function playRound(playerGameChoice, computerGameChoice) {
+    if (playerGameChoice === computerGameChoice) {
+        return tieGame;
+    }
     else if (
-        (playerSelection === 'Paper' && item === 'Rock') ||
-        (playerSelection === 'Rock' && item === 'Scissors') ||
-        (playerSelection === 'Scissors' && item === 'Paper')) {
-            alert('You win!');
-        }
+        (playerGameChoice === 'rock' && computerGameChoice === 'scissors') ||
+        (playerGameChoice === 'paper' && computerGameChoice === 'rock') ||
+        (playerGameChoice === 'scissors' && computerGameChoice === 'paper')) {
+        return playerWins;
+    }
     else if (
-        (playerSelection === 'Rock' && item === 'Paper') ||
-        (playerSelection === 'Scissors' && item === 'Rock') ||
-        (playerSelection === 'Paper' && item === 'Scissors')) {
-            alert('You lose!');
-        }
+        (playerGameChoice === 'scissors' && computerGameChoice === 'rock') ||
+        (playerGameChoice === 'rock' && computerGameChoice === 'paper') ||
+        (playerGameChoice === 'paper' && computerGameChoice === 'scissors')) {
+        return computerWins;
+    }
+    else {
+        alert('Enter a Valid Choice');
+    }
 }
 
-getComputerChoice(Array('Rock', 'Paper', 'Scissors'));
+const perRoundScore = playRound(playerSelection, computerSelection)
 
-// YOU GOT IT DUDE GOOD SHIT
+function game(player) {
+    if (player === playerWins) {
+    console.log(++playerWins);
+    }
+    else if (player === computerWins) {
+        console.log(++computerWins)
+    }
+    else {
+        console.log('It was a tie, no points awarded');
+    }
+}
 
-// play a round
-// compare playerSelection to computerSelection
+const results = game(perRoundScore);
 
-// if (playerSelection === 'Rock' && item === 'Rock') {
-//         alert('Tie');
-//     }
