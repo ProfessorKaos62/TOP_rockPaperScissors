@@ -1,8 +1,17 @@
+// intialize variables that will be placed in functions
+
+const computerChoice = ['Rock', 'Paper', 'Scissors'];
+const tieGame = 'Tie, No Points';
+let playerWins = 0;
+let computerWins = 0;
+
+// gets computer's choice
+
 function getComputerChoice(randomChoice){
     return randomChoice[Math.floor(Math.random()*randomChoice.length)];
   }
 
-const computerChoice = ['Rock', 'Paper', 'Scissors'];
+// plays the first round, determines who takes the points and who doesn't
 
 function playRound(playerGameChoice, computerGameChoice) {
     if (playerGameChoice === computerGameChoice) {
@@ -25,11 +34,10 @@ function playRound(playerGameChoice, computerGameChoice) {
     }
 }
 
-const tieGame = 'Tie, No Points';
-let playerWins = 0;
-let computerWins = 0;
-
-
+// loops player's input with computer's choice 
+// determines who won the previous round
+// add's points to the player who won
+// keeps track of score
 
 for (let i = 0; i < 5; i++) {
     const playerSelection = prompt('Choose your weapon',).toLowerCase();
@@ -48,10 +56,15 @@ for (let i = 0; i < 5; i++) {
     }
     
     const results = game(perRoundScore);
+    console.log('You chose: ' + playerSelection);
+    console.log('Computer chose: ' + computerSelection);
     console.log(results);
     console.log('Player score: ' + playerWins);
     console.log('Computer score: ' + computerWins);
 }
+
+// determines which player had more points
+// outputs a message of whos  won
 
 function results(playerResults, computerResults) {
     if (playerResults === computerResults) {
