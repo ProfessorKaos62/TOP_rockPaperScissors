@@ -56,11 +56,11 @@ for (let i = 0; i < 5; i++) {
     }
     
     const results = game(perRoundScore);
-    console.log('You chose: ' + playerSelection);
-    console.log('Computer chose: ' + computerSelection);
+    console.log(`You chose: ${playerSelection}`);
+    console.log(`Computer chose: ${computerSelection}`);
     console.log(results);
-    console.log('Player score: ' + playerWins);
-    console.log('Computer score: ' + computerWins);
+    console.log(`Player score: ${playerWins}`);
+    console.log(`Computer score: ${computerWins}`);
 }
 
 // determines which player had more points
